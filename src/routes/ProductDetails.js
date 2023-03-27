@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { removeProduct, setSelectorProdact } from '../redux/reducers/selectProdact';
 function ProductDetails() {
-    const selectrProduct = useSelector(state => state.selectProduct.obj)
+    const selectrProduct = useSelector(state => state.selectProduct.obj);
     const dispatch = useDispatch();
-    const { productId } = useParams()
+    const { productId } = useParams();
     const [isLoded, setIsLoded] = useState(false);
     const [counter, setCounter] = useState(1);
     const [isPurchase, setIsPurchase] = useState(false)
@@ -32,7 +32,7 @@ function ProductDetails() {
                         <div style={{ marginTop: 80 }} className="container">
                             <div className="row">
                                 <div className="col-xl-6 border">
-                                    <img style={{ height: 600,width:"100%", objectFit: 'cover' }} className='rounded' src={selectrProduct.image} alt="404" />
+                                    <img style={{ height: 600, width: "100%", objectFit: 'cover' }} className='rounded' src={selectrProduct.image} alt="404" />
                                 </div>
                                 <div className="col-xl-6 border p-3">
                                     <div >
@@ -45,7 +45,7 @@ function ProductDetails() {
                                         </h5>
                                         <div style={{ borderRadus: '12' }} className="forim d-flex border pt-2 ps-2 align-center">
                                             <button
-                                                onClick={() => setCounter(counter - 1)}
+                                                onClick={() => setCounter(counter > 0 && counter - 1)}
                                                 type="button"
                                                 className="btn h5 btn-outline-secondary"
                                             >-</button>
@@ -121,7 +121,6 @@ function ProductDetails() {
                                                     }
                                                 })
                                             }
-
                                             {selectrProduct.rating.rate}
                                         </div>
                                         <span className='fs-4'><i className='bx bx-show-alt'></i> {selectrProduct.rating.count}</span>

@@ -1,16 +1,9 @@
 import { Link } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
+import Categore from '../routes/Categores'
+
 function Header() {
-  const [categories, setCategories] = useState([])
-  useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products/categories`)
-      .then(res => {
-        setCategories(res.data);
-      })
-  }, [])
- console.log(categories);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top ">
@@ -34,12 +27,9 @@ function Header() {
             </ul>
 
             <ul className="navbar-nav gap-3" >
-              { categories.map(element => {
-                return < li className='nav-item' value="electronics">
-                  <Link className='nav-link' to={element}>{element}</Link>
-                </li>
-              })
-              }
+               <li>
+               <Link to='categores' className='nav-link'>Categores</Link>
+               </li>
             </ul>
 
           </div>

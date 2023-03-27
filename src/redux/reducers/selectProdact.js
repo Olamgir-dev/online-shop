@@ -6,9 +6,9 @@ const selectProdactSlice = createSlice({
         setSelectorProdact: (state,actions) => {
             state.obj=actions.payload
         },
-        removeProduct:(state,actions)  => {
-             state.obj={}
-        }
+        // removeProduct:(state,actions)  => {
+        //      state.obj={}
+        // }
     }
 })
 export const { setSelectorProdact,removeProduct } = selectProdactSlice.actions;
