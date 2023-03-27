@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { removeProduct, setSelectorProdact } from '../redux/reducers/selectProdact';
 function ProductDetails() {
@@ -31,10 +31,10 @@ function ProductDetails() {
                     <>
                         <div style={{ marginTop: 80 }} className="container">
                             <div className="row">
-                                <div className="col-xl-6 border">
+                                <div className="col-lg-6 border">
                                     <img style={{ height: 600, width: "100%", objectFit: 'cover' }} className='rounded' src={selectrProduct.image} alt="404" />
                                 </div>
-                                <div className="col-xl-6 border p-3">
+                                <div className="col-lg-6 border p-3">
                                     <div >
                                         <h5 className='card-title h1 fw-normal lh-sm'>
                                             {selectrProduct.title}
@@ -59,21 +59,20 @@ function ProductDetails() {
                                             </button>
 
                                             {
-                                                isPurchase ? <div className='card col-xl-6 p-3' style={{
-
+                                                isPurchase ? <div className='card col-12 col-md-8 col-lg-6   col-xl-6  p-3' style={{
                                                     position: "fixed",
                                                     top: "50%",
-                                                    left: "50%",
+                                                    left:"50%",
                                                     transform: "translate(-50%, -50%)",
                                                     bacgrauntColor: 'red'
                                                 }}>
-                                                    <h5 style={{ cursor: 'pointor' }} onClick={() => setIsPurchase(false)} className='text-end btn'><i class='bx fs-5 bxs-x-circle'></i></h5>
+                                                    <h5 style={{ cursor: 'pointor' }} onClick={() => setIsPurchase(false)} className='text-end btn'><i className='bx fs-5 bxs-x-circle'></i></h5>
                                                     <h5 className='text-center'>{selectrProduct.title}</h5>
                                                     <div className="row">
                                                         <div className="col-xl-6 p-3 bg-light">
                                                             <p>Total price: {selectrProduct.price * counter}$</p>
                                                             <p className='border-bottom' >Payment system commission: {percentage}$</p>
-                                                            <h6 class>Common: {selectrProduct.price * counter + percentage}$</h6>
+                                                            <h6 >Common: {selectrProduct.price * counter + percentage}$</h6>
                                                         </div>
                                                         <div className="col-xl-6">
                                                             <div className="input-group">
@@ -86,8 +85,8 @@ function ProductDetails() {
                                                                     pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}"
                                                                     aria-describedby="inputGroup-sizing-default" />
                                                             </div>
-                                                            <div class="input-group mt-4 ">
-                                                                <span class="input-group-text" id="inputGroup-sizing-default">Validity period</span>
+                                                            <div className="input-group mt-4 ">
+                                                                <span className="input-group-text" id="inputGroup-sizing-default">Validity period</span>
                                                                 <input
                                                                     type="text"
                                                                     className="form-control"
@@ -114,17 +113,18 @@ function ProductDetails() {
                                                     number = (num >= 0.5 ? Math.ceil(selectrProduct.rating.rate) : Math.floor(selectrProduct.rating.rate));
                                                     console.log(number)
                                                     if (val <= number) {
-                                                        return <i style={{ color: '#e6bc19' }} className='bx bxs-star'></i>
+                                                        return <i key={index} style={{ color: '#e6bc19' }} className='bx bxs-star'></i>
                                                     }
                                                     else {
-                                                        return <i style={{ color: '#e6bc19' }} className='bx bx-star'></i>
+                                                        return <i key={index} style={{ color: '#e6bc19' }} className='bx bx-star'></i>
                                                     }
                                                 })
                                             }
                                             {selectrProduct.rating.rate}
                                         </div>
-                                        <span className='fs-4'><i className='bx bx-show-alt'></i> {selectrProduct.rating.count}</span>
+                                        <span className='fs-4'><i className='bx  bx-show-alt'></i> {selectrProduct.rating.count}</span>
                                     </div>
+                                    <Link to='/' className='btn btn-outline-secondary' >Back</Link>
                                 </div>
                             </div>
                         </div>

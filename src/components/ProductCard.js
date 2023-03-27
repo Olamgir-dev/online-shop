@@ -19,10 +19,10 @@ function ProductCard(props) {
                                 number = (num >= 0.5 ? Math.ceil(data.rating.rate) : Math.floor(data.rating.rate));
 
                                 if (val <= number) {
-                                    return <i style={{ color: '#e6bc19' }} className='bx bxs-star'></i>
+                                    return <i key={val} style={{ color: '#e6bc19' }} className='bx bxs-star'></i>
                                 }
                                 else {
-                                    return <i style={{ color: '#e6bc19' }} className='bx bx-star'></i>
+                                    return <i key={val} style={{ color: '#e6bc19' }} className='bx bx-star'></i>
                                 }
                             })
                         }

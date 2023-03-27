@@ -26,14 +26,16 @@ function Categores() {
             <table className='table table-hover'>
               <thead>
                 <tr>
-                  <th className='col'>Categores</th>
+                  <th className='col text-capitalize'>Categores</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  categories.map(element => {
-                    return < tr>
-                      <Link className='nav-link col' to={`${element}`}>{element}</Link>
+                  categories.map((element, index) => {
+                    return < tr key={index}>
+                      <td>
+                      <Link className='nav-link col text-capitalize' to={`${element}`}>{element}</Link>
+                      </td>
                     </tr>
                   })
                 }
@@ -42,9 +44,9 @@ function Categores() {
           </div>
         </div>
       </div>)
-        : (<h1 style={{ height: "80vh" }} className='w-100'>
+        : (<div style={{ height: "80vh" }} className='w-100'>
           <i style={{ position: "fixed", top: "45vh", left: "50vw", zIndex: 12, fontSize: "100px" }} className='bx bx-loader bx-spin bx-flip-horizontal' ></i>
-        </h1>)
+        </div>)
       }
     </>
   )

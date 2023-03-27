@@ -4,6 +4,7 @@ import axios from 'axios'
 import RouteDetails from './RouteDetails'
 function Categore() {
   const { categore } = useParams()
+  console.log(categore)
   const [isLoded, setIsLoded] = useState(false)
   const [data, setData] = useState([])
   useEffect(() => {
@@ -13,7 +14,6 @@ function Categore() {
         setData(res.data)
         setIsLoded(true)
       })
-
     return () => {
       setIsLoded(false)
     }
@@ -22,14 +22,14 @@ function Categore() {
     <>
       {isLoded ?
         <div className="container mt-5">
+          <h1 className=' pt-4 text-center text-capitalize'>{categore}</h1>
           <div className="row">
-            {data.map(data => <RouteDetails data={data} key={data.id} />)}
+            {data.map((data,index) => <RouteDetails data={data} key={index} />)}
           </div>
         </div> :
-        <h1 style={{ height: "80vh" }} className='w-100'>
+        <div style={{ height: "80vh" }} className='w-100'>
           <i style={{ position: "fixed", top: "45vh", left: "50vw", zIndex: 12, fontSize: "100px" }} className='bx bx-loader bx-spin bx-flip-horizontal' ></i>
-        </h1>
-      }
+        </div>}
     </>
   )
 }

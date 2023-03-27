@@ -8,9 +8,9 @@ const productSlice=createSlice({
     setProducts:(state,action)=>{
         state.array = action.payload
     },
-    // removeProduct:(state,action)=>{
-    //   state.array={}
-    // } 
+    removeProduct:(state,action)=>{
+      state.array={}
+    } 
   }
 })
 

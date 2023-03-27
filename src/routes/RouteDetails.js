@@ -15,16 +15,16 @@ function RouteDetails(props) {
                         <div className="d-flex justify-content-between align-items-center">
                             <span className='fs-6 '><i className='bx bx-show-alt'></i> {data.rating.count}</span>
                             <span className='fs-6'>{
-                                rate.map((val) => {
+                                rate.map((val,i) => {
                                     const num = data.rating.rate - Math.floor(data.rating.rate);
                                     let number;
                                     number = (num >= 0.5 ? Math.ceil(data.rating.rate) : Math.floor(data.rating.rate));
 
                                     if (val <= number) {
-                                        return <i style={{ color: '#e6bc19' }} className='bx bxs-star'></i>
+                                        return <i key={i} style={{ color: '#e6bc19' }} className='bx bxs-star'></i>
                                     }
                                     else {
-                                        return <i style={{ color: '#e6bc19' }} className='bx bx-star'></i>
+                                        return <i key={i} style={{ color: '#e6bc19' }} className='bx bx-star'></i>
                                     }
                                 })
                             }
