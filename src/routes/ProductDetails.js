@@ -24,6 +24,21 @@ function ProductDetails() {
     }, [])
     const [rate] = useState([1, 2, 3, 4, 5])
     let percentage = selectrProduct.price * counter / 10;
+    const creditCard=(event)=>{
+            const input = event.target;
+            let value = input.value.replace(/\s/g, '');
+            const parts = [];
+            while (value.length > 0 && value.length <= 16 ) {
+              parts.push(value.substring(0, 4));
+              value = value.substring(4);}
+            input.value = parts.join(' '); 
+    }
+    const creditTime=(event)=>{
+        const input = event.target.value;
+        if(input.length===2) event.target.value = input+'/';
+        else if(input.length>2&&input.length<=5) event.target.value =input; 
+        else if(input.length>5) event.target.value='';
+    }
     return (
         <>
             {isLoded ?
@@ -78,6 +93,7 @@ function ProductDetails() {
                                                             <div className="input-group">
                                                                 <span className="input-group-text" id="inputGroup-sizing-default">Credit card</span>
                                                                 <input
+                                                                    onInput={(e)=>{creditCard(e)}}
                                                                     type="text"
                                                                     className="form-control"
                                                                     aria-label="Sizing example input"
@@ -88,6 +104,7 @@ function ProductDetails() {
                                                             <div className="input-group mt-4 ">
                                                                 <span className="input-group-text" id="inputGroup-sizing-default">Validity period</span>
                                                                 <input
+                                                                onInput={(e)=>creditTime(e)}
                                                                     type="text"
                                                                     className="form-control"
                                                                     aria-label="Sizing example input"
